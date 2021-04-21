@@ -22,10 +22,10 @@
 
     <header class="bg-info">
         <div class="row text-white container-fluid">
-            <div class="col-md-6 col-9 p-3">
+            <div class="col-md-6 col-9  p-3">
                 <h2 style="padding-left:40px;">SHIFA BANU</h2>
             </div>
-            <div class="col-md-6 ">
+            <div class="col-md-6  col-3 ml-auto ">
                 <nav class="navbar navbar-expand-lg navbar-light">
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -35,7 +35,7 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto p-3">
+                        <ul class="navbar-nav ml-auto ">
                             <li class="nav-item active">
                                 <a class="nav-link text-white" href="#home">Home</a>
                             </li>
@@ -166,12 +166,11 @@
                 <div style="margin:auto;width: 500px;">
                     <h1 class="text-center text-white" id="contact">Contact Us</h1>
 
-                    <form id="submit" method="POST"
-                        action="https://script.google.com/macros/s/AKfycbzbS6moMbT_MhXcPlbsaQJm4ePdCqSv1pEV4cMwVNUA1L62EvSICo39eOH79T87T2o/exec">
+                    <form id="submit-form" action="">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Name" name="Name">
+                                <input type="text" class="form-control" id="name" placeholder="Name" name="Name" required>
                                 
 
                             </div>
@@ -180,26 +179,26 @@
                         <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="text">Place</label>
-                            <input type="text" class="form-control" id="place" placeholder="Place" name="Place">
+                            <input type="text" class="form-control" id="place" placeholder="Place" name="Place" required>
                         </div>
                         </div>
 
                         <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="Email"required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="number">Mobile</label>
-                            <input type="tel" class="form-control" id="number" placeholder="Phone no" name="Phone">
+                            <input type="tel" class="form-control" id="number" placeholder="Phone no" name="Phone"required>
                         </div>
                     </div>
 
                         <div class="form-group mt-3 text-center">
-                            <button type="submit" class="btn btn-primary width=50px">Submit</button>
+                            <button type="submit" value="submit" class="btn btn-primary width=50px">Submit</button>
                         </div>
                         
                         </form>
@@ -218,9 +217,9 @@
     <footer class="bg-info">
         
             <div class="col-md-12 text-center text-white">
-                <a href="http://www.facebook.com/Shifa Nashif">
+                <a href="https://www.facebook.com/shifa.nashif.148/" style="text-decoration: none; color:#fff";>
                 <i class="fab fa-facebook"></i></a>
-                <a href="http://www.instagram.com/shifa_nashif">                                        
+                <a href="http://www.instagram.com/shifa_nashif"style="text-decoration: none; color:#fff";>                                        
                 <i class="fab fa-instagram-square"></i></a>
                 <p>copyrights
                 </p>
@@ -247,6 +246,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -256,7 +257,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="index.js"></script>
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbzbS6moMbT_MhXcPlbsaQJm4ePdCqSv1pEV4cMwVNUA1L62EvSICo39eOH79T87T2o/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 
 </body>
 
 </html>
+
